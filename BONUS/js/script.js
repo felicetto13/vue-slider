@@ -43,6 +43,10 @@ const app = new Vue(
         },
         methods:
         {
+            //Function first point Bonus request
+            activeImage(slide){
+                this.slideActive = slide;
+            },
             prevActiveImage() {
                 const index = this.slideActive.idImage - 1;
                 if (index === 0) {
