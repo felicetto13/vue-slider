@@ -39,7 +39,7 @@ const app = new Vue(
         data:
         {
             slidesData: slides,
-            slideActive: slides[4],
+            slideActive: slides[Math.floor(Math.random() * slides.length)],
         },
         methods:
         {
