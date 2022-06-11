@@ -15,8 +15,8 @@
 
         <div class="container" >
             <div class="slider-wrapper" tabindex="0">
-
-                <div class="item">
+                <template>
+                    <div class="item">
                     <img :src="slideActive.image" :alt="slideActive.title" />
                     <div class="text">
                         <h3>{{ slideActive.title }}</h3>
@@ -25,6 +25,8 @@
                         </p>
                     </div>
                 </div>
+                </template>
+                
 
                 <div class="thumbs">
                     <div class="prev" @click="prevActiveImage"></div>

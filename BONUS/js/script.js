@@ -46,10 +46,17 @@ const app = new Vue(
             slidesData: slides,
             slideActive: slides[Math.floor(Math.random() * slides.length)],
         },
+        
+        mounted() 
+        {
+            setInterval(this.next,3000)
+        },
+                
+            
         methods:
         {
             //Function first point Bonus request
-            activeImage(slide){
+            activeImage(slide) {
                 this.slideActive = slide;
             },
             prevActiveImage() {
@@ -58,20 +65,37 @@ const app = new Vue(
                     return;
                 } else {
                     slides[index].isActive = false;
-                    slides[index-1].isActive = true;
-                    this.slideActive = slides[index-1];
+                    slides[index - 1].isActive = true;
+                    this.slideActive = slides[index - 1];
                 }
             },
             nextActiveImage() {
                 const index = this.slideActive.idImage - 1;
-                if (index === slides.length-1) {
+                if (index === slides.length - 1) {
                     return;
                 } else {
                     slides[index].isActive = false;
-                    slides[index+1].isActive = true;
-                    this.slideActive = slides[index+1]
+                    slides[index + 1].isActive = true;
+                    this.slideActive = slides[index + 1]
                 }
+            },
+            next(){
+                let index = this.slideActive.idImage - 1;
+                if (index === slides.length - 1) {
+                    index = 0;
+                    this.slideActive = slides[index]
+                    slides[slides.length - 1].isActive = false;
+                    slides[index].isActive = true;
+                } else {
+                    slides[index].isActive = false;
+                    slides[index + 1].isActive = true;
+                    this.slideActive = slides[index + 1]
+                }
+                return this.slideActive;
             }
-        }
+            
+            
+        },
+        
     }
 )
